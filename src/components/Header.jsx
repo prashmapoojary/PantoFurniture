@@ -71,7 +71,7 @@ const Header = ({ setSearchTerm }) => {
   };
 
   const navLinks = [
-    { name: 'Furniture', dropdown: true, href: '#shop' },
+    { name: 'Furniture', href: '#shop' },
     { name: 'Shop', href: '#shop' },
     { name: 'About Us', href: '#about-us' },
     { name: 'Contact', href: '#contact' },
@@ -95,15 +95,16 @@ const Header = ({ setSearchTerm }) => {
                   {link.name}
                   {link.dropdown && (
                     <svg
-                      width="18"
-                      height="18"
+                      width="12"
+                      height="12"
                       viewBox="0 0 24 24"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
+                      style={{ marginLeft: 'auto' }}
                     >
                       <path
                         d="M6 9L12 15L18 9"
-                        stroke="var(--text-color)"
+                        stroke="#000"
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -147,21 +148,21 @@ const Header = ({ setSearchTerm }) => {
               >
                 <path
                   d="M3 12H21"
-                  stroke="var(--text-color)"
+                  stroke="#333"
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
                 <path
                   d="M3 6H21"
-                  stroke="var(--text-color)"
+                  stroke="#333"
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
                 <path
                   d="M3 18H21"
-                  stroke="var(--text-color)"
+                  stroke="#333"
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
