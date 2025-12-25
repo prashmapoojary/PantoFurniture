@@ -4,7 +4,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  color: var(--white);
+  color: var(--text-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,11 +13,16 @@
 .confirmation-content {
   max-width: 600px;
   text-align: center;
-  background: rgba(60, 60, 60, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--bg-color-2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   padding: 3rem 2rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+body[data-theme='dark'] .confirmation-content {
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .confirmation-icon {
@@ -50,13 +55,13 @@
 .confirmation-title {
   font-size: 2rem;
   font-weight: 700;
-  color: var(--white);
+  color: var(--text-color);
   margin: 0 0 1rem 0;
 }
 
 .confirmation-message {
   font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-gray);
   line-height: 1.6;
   margin: 0 0 2rem 0;
 }

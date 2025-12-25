@@ -81,7 +81,23 @@ const Cart = () => {
               {cartItems.map((item) => (
                 <div key={item.id} className="cart-item">
                   <div className="cart-item-image">
-                    <img src={item.image} alt={item.name} />
+                    <img 
+                      src={item.image} 
+                      alt={item.name}
+                      onError={(e) => {
+                        console.error('Failed to load cart image:', item.image, item.name);
+                        // Try to use a fallback or show placeholder
+                        e.target.style.display = 'none';
+                        const parent = e.target.parentElement;
+                        if (parent && !parent.querySelector('.fallback-text')) {
+                          const fallback = document.createElement('div');
+                          fallback.className = 'fallback-text';
+                          fallback.textContent = item.name.substring(0, 2).toUpperCase();
+                          fallback.style.cssText = 'display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; background: var(--primary-color); color: white; font-weight: bold; font-size: 1.5rem; border-radius: 8px;';
+                          parent.appendChild(fallback);
+                        }
+                      }}
+                    />
                   </div>
                   <div className="cart-item-details">
                     <h3 className="cart-item-name">{item.name}</h3>

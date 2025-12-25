@@ -1,6 +1,6 @@
 .materials {
     padding: 60px 0;
-    background-color: var(--white);
+    background-color: var(--bg-color-2);
 }
 
 .materials-content {
@@ -60,7 +60,7 @@
     font-size: 2rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    color: var(--secondary-color);
+    color: var(--text-color);
     line-height: 1.3;
 }
 

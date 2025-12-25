@@ -1,7 +1,8 @@
 .why-us-section {
     padding: 100px 0;
-    background-color: var(--white);
+    background-color: var(--bg-color-2);
     width: 100%;
+    transition: background-color 0.3s ease;
 }
 
 .why-us-content {
@@ -19,7 +20,7 @@
 .why-us-title-wrapper h2 {
     font-size: clamp(2rem, 5vw, 2.625rem);
     font-weight: 700;
-    color: var(--secondary-color);
+    color: var(--text-color);
     line-height: 1.2;
     margin: 0;
 }
@@ -35,21 +36,21 @@
     padding: 30px 20px;
     border-radius: 15px;
     transition: all 0.3s ease;
-    background-color: #fdfdfd;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.04);
+    background-color: var(--bg-color-2);
+    box-shadow: var(--shadow-sm);
 }
 
 .feature-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
+    box-shadow: var(--shadow-md);
+    background-color: var(--bg-color-2);
 }
 
 .feature-card h3 {
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 20px;
-    color: var(--secondary-color);
+    color: var(--text-color);
     line-height: 1.3;
 }
 

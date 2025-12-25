@@ -3,10 +3,10 @@ import './Products.css';
 import { motion } from 'framer-motion';
 import { useCart } from '../context/CartContext';
 
-import chair1 from '../assets/chair1.jpg';
-import chair2 from '../assets/chair2.jpg';
-import chair3 from '../assets/chair3.jpg';
-import chair4 from '../assets/chair4.jpg';
+import chair1 from '../assets/chair1.png';
+import chair2 from '../assets/chair2.png';
+import chair3 from '../assets/chair3.png';
+import chair4 from '../assets/chair4.png';
 import chair5 from '../assets/Urban Lounge Chair.jpg';
 import chair6 from '../assets/Classic Wingback Chair.jpg';
 import chair7 from '../assets/Nordic Fabric Chair.jpg';
@@ -195,22 +195,20 @@ const Products = ({ searchTerm, setSearchTerm, showNotification }) => {
                       <p>${product.price}</p>
                       <button className="add-to-cart" aria-label={`Add ${product.name} to cart`} onClick={() => handleAddToCart(product)}>
                         <svg
-                          width="24"
-                          height="24"
                           viewBox="0 0 24 24"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
                         >
                           <path
                             d="M12 5V19"
-                            stroke="white"
+                            stroke="currentColor"
                             strokeWidth="2"
                             strokeLinecap="round"
                             strokeLinejoin="round"
                           />
                           <path
                             d="M5 12H19"
-                            stroke="white"
+                            stroke="currentColor"
                             strokeWidth="2"
                             strokeLinecap="round"
                             strokeLinejoin="round"

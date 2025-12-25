@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Header.css';
 import { motion } from 'framer-motion';
@@ -13,6 +13,30 @@ const Header = ({ setSearchTerm }) => {
   const { theme, toggleTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [inputValue, setInputValue] = useState('');
+  const [isNavbarVisible, setIsNavbarVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Show navbar at the top of the page
+      if (currentScrollY < 10) {
+        setIsNavbarVisible(true);
+      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down - hide navbar
+        setIsNavbarVisible(false);
+      } else if (currentScrollY < lastScrollY) {
+        // Scrolling up - show navbar
+        setIsNavbarVisible(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -80,7 +104,7 @@ const Header = ({ setSearchTerm }) => {
   return (
     <header className="header" style={{ backgroundImage: `url(${heroImage})` }}>
       <div className="container">
-        <nav className="navbar">
+        <nav className={`navbar ${isNavbarVisible ? 'visible' : 'hidden'}`}>
           <div className="logo">
             <img src={logo} alt="Panto Logo" />
             <h1>Panto</h1>
@@ -119,19 +143,19 @@ const Header = ({ setSearchTerm }) => {
             <div className="theme-toggle" onClick={toggleTheme} role="button" tabIndex={0}>
               {theme === 'light' ? (
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="var(--text-color)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="var(--white)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               ) : (
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="12" cy="12" r="5" stroke="var(--text-color)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M12 1v2" stroke="var(--text-color)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M12 21v2" stroke="var(--text-color)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M4.22 4.22l1.42 1.42" stroke="var(--text-color)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M18.36 18.36l1.42 1.42" stroke="var(--text-color)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M1 12h2" stroke="var(--text-color)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M21 12h2" stroke="var(--text-color)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M4.22 19.78l1.42-1.42" stroke="var(--text-color)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M18.36 5.64l1.42-1.42" stroke="var(--text-color)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <circle cx="12" cy="12" r="5" stroke="var(--white)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M12 1v2" stroke="var(--white)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M12 21v2" stroke="var(--white)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M4.22 4.22l1.42 1.42" stroke="var(--white)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M18.36 18.36l1.42 1.42" stroke="var(--white)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M1 12h2" stroke="var(--white)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M21 12h2" stroke="var(--white)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M4.22 19.78l1.42-1.42" stroke="var(--white)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M18.36 5.64l1.42-1.42" stroke="var(--white)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               )}
             </div>
@@ -217,6 +241,7 @@ const Header = ({ setSearchTerm }) => {
           </form>
         </motion.div>
       </div>
+      <div className={`menu-overlay ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}></div>
     </header>
   );
 };

@@ -1,6 +1,6 @@
 .experience {
     padding: 60px 0;
-    background-color: #FDFDFD;
+    background-color: var(--bg-color);
 }
 
 .experience-content {
@@ -20,7 +20,7 @@
     font-size: 2rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    color: var(--secondary-color);
+    color: var(--text-color);
     line-height: 1.3;
 }
 
@@ -37,10 +37,14 @@
     align-items: center;
     gap: 0.5rem;
     transition: gap 0.3s ease;
+    text-decoration: none;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid transparent;
 }
 
 .experience-text a:hover {
     gap: 1rem;
+    border-bottom-color: var(--primary-color);
 }
 
 .experience-image {

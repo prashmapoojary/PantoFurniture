@@ -1,7 +1,8 @@
 .testimonials-section {
   padding: 80px 0 120px 0;
-  background-color: #F7F7F7;
-  overflow: hidden; 
+  background-color: var(--bg-color);
+  overflow: hidden;
+  transition: background-color 0.3s ease;
 }
 
 .testi-header {
@@ -23,7 +24,7 @@
 .testi-title {
   font-size: 36px;
   font-weight: 700;
-  color: #1E1E1E;
+  color: var(--text-color);
 }
 
 .testi-carousel-wrapper {
@@ -92,21 +93,24 @@
   height: 12px;
   border-radius: 50%;
   border: none;
-  background: #ddd;
+  background: var(--text-gray);
   cursor: pointer;
   transition: all 0.3s ease;
   padding: 0;
+  opacity: 0.4;
 }
 
 .dot:hover {
-  background: #E58411;
+  background: var(--primary-color);
   transform: scale(1.2);
+  opacity: 0.7;
 }
 
 .dot.active {
-  background: #E58411;
+  background: var(--primary-color);
   width: 30px;
   border-radius: 6px;
+  opacity: 1;
 }
 
 .review-content-card {
@@ -114,11 +118,16 @@
   bottom: 20px;
   left: 20px;
   right: 20px;
-  background: white;
+  background: var(--bg-color-2);
   border-radius: 18px;
   padding: 45px 20px 25px 20px;
   text-align: center;
   box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+  transition: background-color 0.3s ease;
+}
+
+body[data-theme='dark'] .review-content-card {
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.05);
 }
 
 .avatar-wrapper {
@@ -142,17 +151,17 @@
 .reviewer-name {
   font-size: 18px;
   font-weight: 700;
-  color: #1E1E1E;
+  color: var(--text-color);
   margin-bottom: 2px;
 }
 .reviewer-role {
   font-size: 12px;
-  color: #8D8D8D;
+  color: var(--text-gray);
   margin-bottom: 15px;
 }
 .review-text {
   font-size: 14px;
-  color: #555;
+  color: var(--text-gray);
   line-height: 1.6;
   font-style: italic;
   margin-bottom: 15px;
@@ -168,9 +177,9 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: white;
+  background: var(--bg-color-2);
   border: none;
-  color: #E58411;
+  color: var(--primary-color);
   font-size: 20px;
   cursor: pointer;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -181,9 +190,13 @@
   transition: all 0.3s ease;
 }
 
+body[data-theme='dark'] .nav-btn {
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+}
+
 .nav-btn:hover {
-  background-color: #E58411;
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--white);
   transform: translateY(-50%) scale(1.1);
   box-shadow: 0 8px 25px rgba(229, 132, 17, 0.4);
 }
